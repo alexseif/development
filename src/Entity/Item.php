@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\NameableEntity;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -9,6 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
 class Item
 {
+    use NameableEntity;
     use TimestampableEntity;
 
     #[ORM\Id]
@@ -16,23 +18,10 @@ class Item
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 }
