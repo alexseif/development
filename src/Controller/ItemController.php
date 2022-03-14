@@ -5,14 +5,15 @@ namespace App\Controller;
 use App\Entity\Item;
 use App\Form\ItemType;
 use App\Repository\ItemRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/item')]
-class ItemController extends AbstractController
+class ItemController extends BaseController
 {
+    const NAME = "Item";
+
     #[Route('/', name: 'app_item_index', methods: ['GET'])]
     public function index(ItemRepository $itemRepository): Response
     {
@@ -30,6 +31,7 @@ class ItemController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $itemRepository->add($item);
+            $this->addFlash('success', self::NAME . self::SPACE . self::CREATED);
             return $this->redirectToRoute('app_item_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -55,6 +57,7 @@ class ItemController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $itemRepository->add($item);
+            $this->addFlash('success', self::NAME . self::SPACE . self::UPDATED);
             return $this->redirectToRoute('app_item_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,6 +72,7 @@ class ItemController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $item->getId(), $request->request->get('_token'))) {
             $itemRepository->remove($item);
+            $this->addFlash('success', self::NAME . self::SPACE . self::DELETED);
         }
 
         return $this->redirectToRoute('app_item_index', [], Response::HTTP_SEE_OTHER);
