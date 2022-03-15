@@ -7,7 +7,7 @@
     {{ include('item/_delete_form.html.twig') }}
 {% endblock %}
 
-{% block content %}
+{% block body %}
 
     <div><strong>Name</strong>: <span>{{ item.name }}</span></div>
     <div><strong>CreatedAt</strong>: <span>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</span></div>

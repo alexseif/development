@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title_html %}{{ block('title')|striptags }}{% endblock %} | Development </title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -16,30 +13,35 @@
     {% endblock %}
 </head>
 <body>
-{% block body %}
-    {% block navigation %}
-        {% include 'navbar.html.twig' %}
+{% block body_wrapper %}
+    {% block navigation %}{% include 'navbar.html.twig' %}{% endblock %}
+    {% block page_actions_wrapper %}
+        <div class="page-actions btn-group btn-group-sm">
+            {% block page_actions %}
+            {% endblock %}
+        </div><!-- page-actions -->
     {% endblock %}
-    <div class="container-fluid">
+    <div class="container">
         {% block page_messages %}
             {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
+                <div class="alert alert-success">{{ message }}</div><!-- .alert-success -->
             {% endfor %}
         {% endblock %}
-        {% block page_content %}
-            <h1>{% block title %}{% endblock %}</h1>
-            <div class="item-toolbar btn-group btn-group-sm">
-                {% block page_actions %}
+        {% block card %}
+            <div class="card">
+                {% block card_header %}
+                    <div class="card-header">
+                        <h1 class="card-title">{% block title %}{% endblock %}</h1>
+                    </div><!-- .card-header -->
                 {% endblock %}
-            </div>
-            <div class="content">
-                {% block content %}
+                {% block card_body %}
+                    <div class="content card-body">{% block body %}{% endblock %}</div><!-- .content .card-body -->
                 {% endblock %}
-            </div>
+                {% block card_footer %}
+                {% endblock %}
+            </div><!-- .card -->
         {% endblock %}
-    </div>
+    </div><!-- .container -->
 {% endblock %}
 </body>
 </html>

@@ -1,0 +1,21 @@
+/**
+  * The following content was designed & implemented under AlexSeif.com
+**/
+
+.page-actions {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 100;
+
+  a {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .275);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 70px;
+    font-size: 2em;
+  }
+
+}

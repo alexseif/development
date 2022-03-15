@@ -2,11 +2,10 @@
 
 {% block title %}Item index{% endblock %}
 {% block page_actions %}
-    <a href="{{ path('app_item_new') }}">Create new</a>
-
+    <a href="{{ path('app_item_new') }}"><em class="bi bi-plus"></em></a>
 {% endblock %}
 
-{% block content %}
+{% block card_body %}
     <table class="table">
         <caption>Items table</caption>
         <thead>
