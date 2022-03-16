@@ -1,18 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Item{% endblock %}
+{% block title %}<small>Item:</small> {{ item.name }}{% endblock %}
 {% block page_actions %}
-    <a class="btn btn-link" href="{{ path('app_item_index') }}">back to list</a>
-    <a class="btn btn-link" href="{{ path('app_item_edit', {'id': item.id}) }}">edit</a>
+    <a class="btn-outline-dark" href="{{ path('app_item_index') }}"><em class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block card_actions %}
+    <a class="btn btn-primary" href="{{ path('app_item_edit', {'id': item.id}) }}"><em class="bi bi-pencil"></em></a>
     {{ include('item/_delete_form.html.twig') }}
 {% endblock %}
 
 {% block body %}
-
-    <div><strong>Name</strong>: <span>{{ item.name }}</span></div>
-    <div><strong>CreatedAt</strong>: <span>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</span></div>
-    <div><strong>UpdatedAt</strong>: <span>{{ item.updatedAt ? item.updatedAt|date('Y-m-d H:i:s') : '' }}</span></div>
-
-
-
+    <table>
+        <caption>Item Details</caption>
+        <tr>
+            <th>Name</th>
+            <td>{{ item.name }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ item.updatedAt ? item.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+    </table>
 {% endblock %}

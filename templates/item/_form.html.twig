@@ -1,6 +1,8 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-<div class="form-actions btn-group btn-group-sm">
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-</div>
+<div class="form-actions">
+    <div class="btn-group">
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div><!-- .btn-group -->
+</div><!-- .form-actions -->
 {{ form_end(form) }}

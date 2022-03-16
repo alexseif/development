@@ -24,18 +24,30 @@
     <div class="container">
         {% block page_messages %}
             {% for message in app.flashes('success') %}
-                <div class="alert alert-success">{{ message }}</div><!-- .alert-success -->
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div><!-- .alert-success -->
             {% endfor %}
         {% endblock %}
         {% block card %}
             <div class="card">
                 {% block card_header %}
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <h1 class="card-title">{% block title %}{% endblock %}</h1>
+                        <div class="card-actions">
+                            <div class="btn-toolbar">
+                                {% block card_actions %}
+                                {% endblock %}
+                            </div><!-- .btn-toolbar -->
+                        </div><!-- .card-actions -->
                     </div><!-- .card-header -->
                 {% endblock %}
                 {% block card_body %}
-                    <div class="content card-body">{% block body %}{% endblock %}</div><!-- .content .card-body -->
+                    <div class="content card-body">
+                        {% block body %}
+                        {% endblock %}
+                    </div><!-- .content .card-body -->
                 {% endblock %}
                 {% block card_footer %}
                 {% endblock %}

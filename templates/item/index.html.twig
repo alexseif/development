@@ -2,12 +2,12 @@
 
 {% block title %}Item index{% endblock %}
 {% block page_actions %}
-    <a href="{{ path('app_item_new') }}"><em class="bi bi-plus"></em></a>
+    <a class="btn-outline-primary" href="{{ path('app_item_new') }}"><em class="bi bi-plus"></em></a>
 {% endblock %}
 
 {% block card_body %}
     <table class="table">
-        <caption>Items table</caption>
+        <caption>Items list</caption>
         <thead>
         <tr>
             <th>Name</th>
@@ -23,8 +23,10 @@
                 <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ item.updatedAt ? item.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_item_show', {'id': item.id}) }}">show</a>
-                    <a href="{{ path('app_item_edit', {'id': item.id}) }}">edit</a>
+                    <a class="btn btn-link" href="{{ path('app_item_show', {'id': item.id}) }}"><em
+                                class="bi bi-eye-fill"></em></a>
+                    <a class="btn btn-link" href="{{ path('app_item_edit', {'id': item.id}) }}"><em
+                                class="bi bi-pencil"></em></a>
                 </td>
             </tr>
         {% else %}
