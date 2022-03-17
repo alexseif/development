@@ -7,7 +7,19 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
-
 // start the Stimulus application
 import './bootstrap';
+import 'jquery'
 import 'bootstrap'
+import 'datatables.net-bs5'
+import 'datatables.net-rowreorder';
+import 'datatables.net-rowreorder-bs5';
+
+const $ = require('jquery');
+Window.prototype.$ = $;
+
+$(document).ready(function () {
+    $('#items-table').DataTable({
+        rowReorder: true
+    });
+});
