@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expense Inbox index{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-primary" href="{{ path('app_expense_inbox_new') }}"><em class="bi bi-plus"></em></a>
+{% endblock %}
+
+{% block body %}
+    <table class="table" id="expense_inbox_table">
+        <caption>Expenses Inbox</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Priority</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for expense_inbox in expense_inboxes %}
+            <tr data-position="{{ expense_inbox.sortPosition }}">
+                <td>{{ expense_inbox.name }}</td>
+                <td>{{ expense_inbox.description }}</td>
+                <td>{{ expense_inbox.price }}</td>
+                <td>{{ expense_inbox.priority }}</td>
+                <td>{{ expense_inbox.createdAt ? expense_inbox.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ expense_inbox.updatedAt ? expense_inbox.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-link btn-outline-primary text-light"
+                       href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}"><em
+                                class="bi bi-eye-fill"></em></a>
+                    <a class="btn btn-link btn-outline-primary text-light"
+                       href="{{ path('app_expense_inbox_edit', {'id': expense_inbox.id}) }}"><em
+                                class="bi bi-pencil"></em></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

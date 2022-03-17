@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Expense Inbox{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_expense_inbox_show', {'id':expense_inbox.id}) }}"><em
+                class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block card_actions %}
+    {{ include('expense_inbox/_delete_form.html.twig') }}
+{% endblock %}
+{% block body %}
+    {{ include('expense_inbox/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

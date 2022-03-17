@@ -22,4 +22,7 @@ $(document).ready(function () {
     $('#items-table').DataTable({
         rowReorder: true
     });
+    $('#expense_inbox_table').DataTable({
+        rowReorder: true
+    });
 });

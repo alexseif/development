@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author Alex Seif <alex.seif@gmail.com>
  */
-trait NameableEntity
+trait NamedEntity
 {
     /**
      * @var string

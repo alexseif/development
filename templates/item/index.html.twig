@@ -18,7 +18,7 @@
         </thead>
         <tbody>
         {% for item in items %}
-            <tr data-position="{{ item.position }}">
+            <tr data-position="{{ item.sortPosition }}">
                 <td>{{ item.name }}</td>
                 <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ item.updatedAt ? item.updatedAt|date('Y-m-d H:i:s') : '' }}</td>

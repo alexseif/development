@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<small>Expense Inbox:</small> {{ expense_inbox.name }}{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_expense_inbox_index') }}"><em class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block card_actions %}
+    <a class="btn btn-primary" href="{{ path('app_expense_inbox_edit', {'id': expense_inbox.id}) }}">
+        <em class="bi bi-pencil"></em>
+    </a>
+    {{ include('expense_inbox/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <table>
+        <caption>Expense inbox</caption>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ expense_inbox.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ expense_inbox.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ expense_inbox.description }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ expense_inbox.price }}</td>
+        </tr>
+        <tr>
+            <th>SortPosition</th>
+            <td>{{ expense_inbox.sortPosition }}</td>
+        </tr>
+        <tr>
+            <th>Priority</th>
+            <td>{{ expense_inbox.priority }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ expense_inbox.createdAt ? expense_inbox.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ expense_inbox.updatedAt ? expense_inbox.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
