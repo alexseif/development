@@ -5,14 +5,15 @@ namespace App\Controller;
 use App\Entity\ExpenseInbox;
 use App\Form\ExpenseInboxType;
 use App\Repository\ExpenseInboxRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/expense/inbox')]
-class ExpenseInboxController extends AbstractController
+class ExpenseInboxController extends BaseController
 {
+    const NAME = "Expense Inbox";
+
     #[Route('/', name: 'app_expense_inbox_index', methods: ['GET'])]
     public function index(ExpenseInboxRepository $expenseInboxRepository): Response
     {
@@ -30,6 +31,7 @@ class ExpenseInboxController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $expenseInboxRepository->add($expenseInbox);
+            $this->addFlash('success', self::NAME . self::SPACE . self::CREATED);
             return $this->redirectToRoute('app_expense_inbox_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -58,6 +60,7 @@ class ExpenseInboxController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $expenseInboxRepository->add($expenseInbox);
+            $this->addFlash('success', self::NAME . self::SPACE . self::UPDATED);
             return $this->redirectToRoute('app_expense_inbox_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -75,6 +78,7 @@ class ExpenseInboxController extends AbstractController
     ): Response {
         if ($this->isCsrfTokenValid('delete' . $expenseInbox->getId(), $request->request->get('_token'))) {
             $expenseInboxRepository->remove($expenseInbox);
+            $this->addFlash('success', self::NAME . self::SPACE . self::DELETED);
         }
 
         return $this->redirectToRoute('app_expense_inbox_index', [], Response::HTTP_SEE_OTHER);

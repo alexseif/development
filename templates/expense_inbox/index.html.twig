@@ -10,9 +10,11 @@
         {% for expense_inbox in expense_inboxes %}
             <li class="list-group-item" data-position="{{ expense_inbox.sortPosition }}">
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-link text-light"
-                       href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}">{{ expense_inbox.name }}</a>
-                    <span>EGP {{ expense_inbox.price|number_format }}</span>
+                    <div class="w-75 d-flex justify-content-between">
+                        <a class="btn btn-link text-light"
+                           href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}">{{ expense_inbox.name }}</a>
+                        <span>EGP {{ expense_inbox.price|number_format }}</span>
+                    </div>
                     <div class="btn-group">
                         <a class="btn btn-link btn-outline-primary text-light"
                            href="{{ path('app_expense_inbox_edit', {'id': expense_inbox.id}) }}"><em
@@ -21,7 +23,7 @@
                 </div><!-- .d-flex -->
             </li>
         {% else %}
-            <li>
+            <li class="list-group-item">
                 <span>no records found</span>
             </li>
         {% endfor %}
