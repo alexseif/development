@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\CompleteableEntity;
 use App\Entity\Traits\DescribedEntity;
 use App\Entity\Traits\NamedEntity;
 use App\Entity\Traits\PricedEntity;
@@ -19,6 +20,7 @@ class ExpenseInbox
     use PricedEntity;
     use SortableEntity;
     use PriorityEntity;
+    use CompleteableEntity;
     use TimestampableEntity;
 
     #[ORM\Id]

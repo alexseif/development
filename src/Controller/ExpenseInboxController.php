@@ -30,6 +30,7 @@ class ExpenseInboxController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $expenseInboxRepository->add($expenseInbox);
             $this->addFlash('success', self::NAME . self::SPACE . self::CREATED);
             return $this->redirectToRoute('app_expense_inbox_index', [], Response::HTTP_SEE_OTHER);

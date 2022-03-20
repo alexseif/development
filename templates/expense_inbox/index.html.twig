@@ -8,11 +8,20 @@
 {% block card_body %}
     <ul class="list-group">
         {% for expense_inbox in expense_inboxes %}
-            <li class="list-group-item" data-position="{{ expense_inbox.sortPosition }}">
+            <li class="list-group-item {{ expense_inbox.completed ? 'completed' }}"
+                data-position="{{ expense_inbox.sortPosition }}">
                 <div class="d-flex justify-content-between">
                     <div class="w-75 d-flex justify-content-between">
-                        <a class="btn btn-link text-light"
-                           href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}">{{ expense_inbox.name }}</a>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" name="expense_inbox[completed]"
+                                       class="form-check-input" value="{{ expense_inbox.id }}"
+                                        {{ expense_inbox.completed ? 'checked' }}/>
+                            </label>
+                            <a class="btn btn-link text-light"
+                               href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}">
+                                {{ expense_inbox.name }}</a>
+                        </div>
                         <span>EGP {{ expense_inbox.price|number_format }}</span>
                     </div>
                     <div class="btn-group">

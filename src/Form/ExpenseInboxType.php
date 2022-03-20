@@ -14,7 +14,9 @@ class ExpenseInboxType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('price');
+            ->add('price')
+            ->add('completed')
+            ->add('completedAt');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

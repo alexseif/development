@@ -40,6 +40,14 @@
             <td>{{ expense_inbox.priority }}</td>
         </tr>
         <tr>
+            <th>Completed</th>
+            <td>{{ expense_inbox.completed }}</td>
+        </tr>
+        <tr>
+            <th>CompletedAt</th>
+            <td>{{ expense_inbox.completedAt ? expense_inbox.completedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
             <th>CreatedAt</th>
             <td>{{ expense_inbox.createdAt ? expense_inbox.createdAt|date('Y-m-d H:i:s') : '' }}</td>
         </tr>
