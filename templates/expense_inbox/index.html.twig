@@ -5,44 +5,25 @@
     <a class="btn-outline-primary" href="{{ path('app_expense_inbox_new') }}"><em class="bi bi-plus"></em></a>
 {% endblock %}
 
-{% block body %}
-    <table class="table" id="expense_inbox_table">
-        <caption>Expenses Inbox</caption>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Priority</th>
-            <th>CreatedAt</th>
-            <th>UpdatedAt</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
+{% block card_body %}
+    <ul class="list-group">
         {% for expense_inbox in expense_inboxes %}
-            <tr data-position="{{ expense_inbox.sortPosition }}">
-                <td>{{ expense_inbox.name }}</td>
-                <td>{{ expense_inbox.description }}</td>
-                <td>{{ expense_inbox.price }}</td>
-                <td>{{ expense_inbox.priority }}</td>
-                <td>{{ expense_inbox.createdAt ? expense_inbox.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ expense_inbox.updatedAt ? expense_inbox.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a class="btn btn-link btn-outline-primary text-light"
-                       href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}"><em
-                                class="bi bi-eye-fill"></em></a>
-                    <a class="btn btn-link btn-outline-primary text-light"
-                       href="{{ path('app_expense_inbox_edit', {'id': expense_inbox.id}) }}"><em
-                                class="bi bi-pencil"></em></a>
-                </td>
-            </tr>
+            <li class="list-group-item" data-position="{{ expense_inbox.sortPosition }}">
+                <div class="d-flex justify-content-between">
+                    <a class="btn btn-link text-light"
+                       href="{{ path('app_expense_inbox_show', {'id': expense_inbox.id}) }}">{{ expense_inbox.name }}</a>
+                    <span>EGP {{ expense_inbox.price|number_format }}</span>
+                    <div class="btn-group">
+                        <a class="btn btn-link btn-outline-primary text-light"
+                           href="{{ path('app_expense_inbox_edit', {'id': expense_inbox.id}) }}"><em
+                                    class="bi bi-pencil"></em></a>
+                    </div><!-- .btn-group -->
+                </div><!-- .d-flex -->
+            </li>
         {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
+            <li>
+                <span>no records found</span>
+            </li>
         {% endfor %}
-        </tbody>
-    </table>
-
+    </ul>
 {% endblock %}
