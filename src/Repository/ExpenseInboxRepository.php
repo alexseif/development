@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\ExpenseInbox;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -45,4 +47,16 @@ class ExpenseInboxRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Sums incomplete expense inbox
+     * @return int
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function sum()
+    {
+        return $this->createQueryBuilder('ei')
+            ->select('SUM(ei.price)')->where('ei.completed <> true')
+            ->getQuery()->getSingleScalarResult();
+    }
 }

@@ -38,3 +38,8 @@
         {% endfor %}
     </ul>
 {% endblock %}
+{% block card_footer %}
+    <div class="card-footer text-center">
+        <h5>EGP {{ expense_inbox_total|number_format }}</h5>
+    </div>
+{% endblock %}

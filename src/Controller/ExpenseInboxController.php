@@ -17,8 +17,10 @@ class ExpenseInboxController extends BaseController
     #[Route('/', name: 'app_expense_inbox_index', methods: ['GET'])]
     public function index(ExpenseInboxRepository $expenseInboxRepository): Response
     {
+
         return $this->render('expense_inbox/index.html.twig', [
             'expense_inboxes' => $expenseInboxRepository->findAll(),
+            'expense_inbox_total' => $expenseInboxRepository->sum()
         ]);
     }
 
