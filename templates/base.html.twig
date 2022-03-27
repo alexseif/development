@@ -3,57 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title_html %}{{ block('title')|striptags }}{% endblock %} | Development </title>
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
+    <title>{% block title_html %}{{ block('title')|striptags }}{% endblock %} | Development</title>
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
 </head>
 <body>
 {% block body_wrapper %}
-    {% block navigation %}{% include '_navbar.html.twig' %}{% endblock %}
-    {% block page_actions_wrapper %}
-        <div class="page-actions btn-group btn-group-sm">
-            {% block page_actions %}
-            {% endblock %}
-        </div><!-- page-actions -->
+    {% block navigation %}
+        {% include '_navbar.html.twig' %}
     {% endblock %}
-    <div class="container">
-        {% block page_messages %}
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div><!-- .alert-success -->
-            {% endfor %}
-        {% endblock %}
-        {% block card %}
-            <div class="card">
-                {% block card_header %}
-                    <div class="card-header d-flex justify-content-between">
-                        <h1 class="card-title">{% block title %}{% endblock %}</h1>
-                        <div class="card-actions">
-                            <div class="btn-toolbar">
-                                {% block card_actions %}
-                                {% endblock %}
-                            </div><!-- .btn-toolbar -->
-                        </div><!-- .card-actions -->
-                    </div><!-- .card-header -->
-                {% endblock %}
-                {% block card_body %}
-                    <div class="content card-body">
-                        {% block body %}
+    {% block page_actions_wrapper %}
+        <div class="page-actions btn-group btn-group-sm">{% block page_actions %}{% endblock %}</div><!-- page-actions -->
+    {% endblock %}
+    {% block page_messages %}{% include '_page_messages.html.twig' %}{% endblock %}
+    {% block container_wrapper %}
+        <div class="container">
+            {% block container %}
+                <div class="card">
+                    {% block card %}
+                        {% block card_header %}
+                            <div class="card-header d-flex justify-content-between">
+                                <h1 class="card-title">{% block title %}{% endblock %}</h1>
+                                <div class="card-actions">
+                                    <div class="btn-toolbar">
+                                        {% block card_actions %}
+                                        {% endblock %}
+                                    </div><!-- .btn-toolbar -->
+                                </div><!-- .card-actions -->
+                            </div><!-- .card-header -->
                         {% endblock %}
-                    </div><!-- .content .card-body -->
-                {% endblock %}
-                {% block card_footer %}
-                {% endblock %}
-            </div><!-- .card -->
-        {% endblock %}
-    </div><!-- .container -->
+                        {% block card_body %}
+                            <div class="content card-body">
+                                {% block body %}{% endblock %}
+                            </div><!-- .content .card-body -->
+                        {% endblock %}
+                        {% block card_footer %}
+                        {% endblock %}
+                    {% endblock %}
+                </div><!-- .card -->
+            {% endblock %}
+        </div><!-- .container -->
+    {% endblock %}
 {% endblock %}
 </body>
 </html>
