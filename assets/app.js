@@ -19,10 +19,24 @@ const $ = require('jquery');
 Window.prototype.$ = $;
 
 $(document).ready(function () {
-    $('#items-table').DataTable({
-        rowReorder: true
+    $('#items-table').DataTable({rowReorder: true});
+    $('#expense_inbox_table').DataTable({rowReorder: true});
+
+    // BOF: TOC
+    let ToC = "<nav role='navigation' class='table-of-contents'>" + "<h2>On this page:</h2>" + "<ul>";
+    let newLine, el, title, link, ids = 0;
+    $("article h3").each(function () {
+        el = $(this);
+        title = el.text();
+        if (!el.attr("id")) {
+            el.attr("id", "toc_" + ++ids);
+        }
+        link = "#" + el.attr("id");
+        newLine = "<li>" + "<a href='" + link + "'>" + title + "</a>" + "</li>";
+        ToC += newLine;
     });
-    $('#expense_inbox_table').DataTable({
-        rowReorder: true
-    });
+    ToC += "</ul>" + "</nav>";
+
+    $(".article-content").prepend(ToC);
+    // EOF: TOC
 });

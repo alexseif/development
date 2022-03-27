@@ -4,3 +4,40 @@
 @import "page";
 @import "form";
 @import 'custom';
+
+
+article {
+  padding: 2em;
+  margin: 1em auto;
+}
+
+.table-of-contents {
+  float: right;
+  padding: 0.5em 1em;
+  margin: 0 0 0.5em 0.5em;
+  border: 2px groove $gray-600;
+  border-right-width: 0;
+}
+
+.table-of-contents a {
+  color: $gray-100;
+  text-decoration: none;
+}
+
+.table-of-contents a:hover,
+.table-of-contents a:active {
+  text-decoration: underline;
+}
+
+h3:target {
+  animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+  from {
+    background: $gray-300;
+  }
+  to {
+    background: $gray-700;
+  }
+}
