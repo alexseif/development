@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\ExpenseInbox;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,12 @@ class ExpenseInboxType extends AbstractType
             ->add('description')
             ->add('price')
             ->add('completed')
-            ->add('completedAt');
+            ->add('completedAt', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'date_format' => 'yyyy-MM-dd',
+                'required' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

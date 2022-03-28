@@ -1,5 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.price) }}
+<div class="row">
+    <div class="col">
+        {{ form_row(form.completed) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.completedAt, {'attr':{'class':'d-flex'}}) }}
+    </div>
+</div>
 <div class="form-actions">
     <div class="btn-group">
         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
