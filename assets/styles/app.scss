@@ -41,3 +41,28 @@ h3:target {
     background: $gray-700;
   }
 }
+
+#tray {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0;
+}
+
+#tray .nav {
+  padding: 0;
+}
+
+#tray .dropdown-toggle:after {
+  display: none;
+}
+
+#tray-btn {
+  padding: 4px 10px;
+}
+
+#tray .dropdown-menu.show {
+  width: 50vw;
+  padding: 1em;
+}

@@ -1,0 +1,28 @@
+<nav class="d-print-none" id="tray" data-url="">
+            <span id="tray-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 30 22"><path fill="#AAA"
+                                                               d="M21.1 18.3c.8.8.8 2 0 2.8-.4.4-.9.6-1.4.6s-1-.2-1.4-.6L12 14.8l-6.3 6.3c-.4.4-.9.6-1.4.6s-1-.2-1.4-.6a2 2 0 0 1 0-2.8L9.2 12 2.9 5.7a2 2 0 0 1 0-2.8 2 2 0 0 1 2.8 0L12 9.2l6.3-6.3a2 2 0 0 1 2.8 0c.8.8.8 2 0 2.8L14.8 12l6.3 6.3z"></path></svg></span>
+    <ul class="nav" {{ 1 == app.request.cookies.get('tray-closed') ? 'style="display:none;"' }}>
+        <li class="nav-item dropdown">
+            <a class="btn btn-secondary btn-sm nav-link dropdown-toggle" href="#" role="button"
+               id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                Development
+            </a>
+            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                <q>I believe development comes through persistent action to a certain goal (whether attainable or
+                    not)</q>
+                <p>
+                    With my issues and absence I need to set forth the tools to aid me in remembering my goals,
+                    everyday,
+                    and
+                    the little left overs (daily debts).
+                </p>
+                <q>I also believe the journey of my development requires calculations not beyond my mindset but beyond
+                    my
+                    attention span</q>
+            </div>
+        </li>
+    </ul>
+</nav>
+

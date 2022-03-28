@@ -22,6 +22,13 @@ $(document).ready(function () {
     $('#items-table').DataTable({rowReorder: true});
     $('#expense_inbox_table').DataTable({rowReorder: true});
 
+    // BOF: tray
+    $('#tray-btn').click(function () {
+        var trayNav = $('#tray .nav');
+        trayNav.toggle();
+        document.cookie = trayNav.is(':visible') ? "tray-closed=0;" : "tray-closed=1;";
+    });
+    // EOF: tray
     // BOF: TOC
     let ToC = "<nav role='navigation' class='table-of-contents'>" + "<h2>On this page:</h2>" + "<ul>";
     let newLine, el, title, link, ids = 0;
