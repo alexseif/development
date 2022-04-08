@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Item index{% endblock %}
+{% block title %}{{ type|capitalize }}{% endblock %}
 {% block page_actions %}
-    <a class="btn-outline-primary" href="{{ path('app_item_new') }}"><em class="bi bi-plus"></em></a>
+    <a class="btn-outline-primary" href="{{ path('app_item_new', {'type' : type}) }}"><em class=" bi bi-plus"></em></a>
+{% endblock %}
+{% block card_actions %}
+    {{ knp_menu_render('types',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
 {% endblock %}
 
 {% block card_body %}
@@ -25,9 +28,9 @@
                 <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ item.updatedAt ? item.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-link" href="{{ path('app_item_show', {'id': item.id}) }}"><em
+                    <a class="btn btn-link" href="{{ path('app_item_show', {'id': item.id, 'type':type}) }}"><em
                                 class="bi bi-eye-fill"></em></a>
-                    <a class="btn btn-link" href="{{ path('app_item_edit', {'id': item.id}) }}"><em
+                    <a class="btn btn-link" href="{{ path('app_item_edit', {'id': item.id, 'type':type}) }}"><em
                                 class="bi bi-pencil"></em></a>
                 </td>
             </tr>

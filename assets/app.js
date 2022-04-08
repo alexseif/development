@@ -18,6 +18,8 @@ import 'datatables.net-rowreorder-bs5';
 const $ = require('jquery');
 Window.prototype.$ = $;
 
+const TomSelect = require('tom-select');
+
 $(function () {
     $('#items-table').DataTable({rowReorder: true});
     $('#expense_inbox_table').DataTable({rowReorder: true});
@@ -49,4 +51,8 @@ $(function () {
 
     // form check inline hack
     $('.make-form-check-inline').children('.form-check').addClass('form-check-inline');
+
+    //Tom select
+    var tomSelectConfig = {};
+    new TomSelect('.tom-select', tomSelectConfig);
 });

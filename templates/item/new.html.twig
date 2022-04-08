@@ -2,7 +2,8 @@
 
 {% block title %}New Item{% endblock %}
 {% block page_actions %}
-    <a class="btn-outline-dark" href="{{ path('app_item_index') }}"><em class="bi bi-arrow-left"></em></a>
+    <a class="btn-outline-dark" href="{{ path('app_item_index', {'type':type}) }}"><em
+                class="bi bi-arrow-left"></em></a>
 {% endblock %}
 
 {% block body %}

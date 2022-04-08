@@ -5,6 +5,7 @@
 
 namespace App\Menu;
 
+use App\Dictrionary\Types;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -30,6 +31,21 @@ class MenuBuilder
         $menu->addChild('Expenses Inbox', ['route' => 'app_expense_inbox_index']);
         // ... add more children
 
+        return $menu;
+    }
+
+    public function createTypesMenu(RequestStack $requestStack)
+    {
+        $menu = $this->factory->createItem('root', [
+            'childrenAttributes' => [
+                'class' => 'nav justify-content-end',
+            ],
+        ]);
+        $types = Types::$typeLabels;
+        foreach ($types as $type) {
+            $menu->addChild(ucwords($type), ['route' => 'app_item_index', "routeParameters" => ['type' => $type]]);
+
+        }
         return $menu;
     }
 }

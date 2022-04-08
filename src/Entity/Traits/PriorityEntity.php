@@ -57,7 +57,7 @@ trait PriorityEntity
     /**
      * @return array
      */
-    public static function getPiorityChoices(): array
+    public static function getPriorityChoices(): array
     {
         return Priorities::$priorityChoices;
     }

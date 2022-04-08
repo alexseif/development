@@ -13,10 +13,14 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('type', ChoiceType::class, [
+                'choices' => Item::geTypeChoices(),
+                'attr' => ['class' => 'tom-select']
+            ])
             ->add('name')
             ->add('description')
             ->add('priority', ChoiceType::class, [
-                'choices' => Item::getPiorityChoices(),
+                'choices' => Item::getPriorityChoices(),
                 'expanded' => true,
                 'attr' => ['class' => 'make-form-check-inline'],
             ]);

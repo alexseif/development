@@ -2,10 +2,12 @@
 
 {% block title %}<small>Item:</small> {{ item.name }}{% endblock %}
 {% block page_actions %}
-    <a class="btn-outline-dark" href="{{ path('app_item_index') }}"><em class="bi bi-arrow-left"></em></a>
+    <a class="btn-outline-dark" href="{{ path('app_item_index', {'type':type}) }}"><em
+                class="bi bi-arrow-left"></em></a>
 {% endblock %}
 {% block card_actions %}
-    <a class="btn btn-primary" href="{{ path('app_item_edit', {'id': item.id}) }}"><em class="bi bi-pencil"></em></a>
+    <a class="btn btn-primary" href="{{ path('app_item_edit', {'id': item.id, 'type':type}) }}"><em
+                class="bi bi-pencil"></em></a>
     {{ include('item/_delete_form.html.twig') }}
 {% endblock %}
 

@@ -31,6 +31,13 @@ services:
     tags:
       - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
 
+  app.types_menu:
+    class: Knp\Menu\MenuItem # the service definition requires setting the class
+    factory: [ "@app.menu_builder", createTypesMenu ]
+    arguments: [ "@request_stack" ]
+    tags:
+      - { name: knp_menu.menu, alias: types } # The alias is what is used to retrieve the menu
+
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

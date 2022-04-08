@@ -2,7 +2,7 @@
 
 {% block title %}Edit Item{% endblock %}
 {% block page_actions %}
-    <a class="btn-outline-dark" href="{{ path('app_item_show', {'id':item.id}) }}"><em
+    <a class="btn-outline-dark" href="{{ path('app_item_show', {'id':item.id, 'type':type}) }}"><em
                 class="bi bi-arrow-left"></em></a>
 {% endblock %}
 {% block card_actions %}
