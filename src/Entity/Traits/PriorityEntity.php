@@ -5,9 +5,11 @@
 
 namespace App\Entity\Traits;
 
+use App\Dictrionary\Priorities;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Priority trait
@@ -16,17 +18,18 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 trait PriorityEntity
 {
+
     /**
      * @var integer
      */
     #[Gedmo\SortableGroup]
     #[ORM\Column(type: Types::INTEGER)]
-    private $priority = 0;
+    private int $priority = 0;
 
     /**
      * @return int
      */
-    public function getPriority(): ?int
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -40,5 +43,22 @@ trait PriorityEntity
         $this->priority = $priority;
 
         return $this;
+    }
+
+    /**
+     * @param $priority
+     * @return string
+     */
+    public function getPriorityLabel(): string
+    {
+        return Priorities::$priorityLabels[$this->priority];
+    }
+
+    /**
+     * @return array
+     */
+    public static function getPiorityChoices(): array
+    {
+        return Priorities::$priorityChoices;
     }
 }

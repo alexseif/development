@@ -18,7 +18,7 @@ import 'datatables.net-rowreorder-bs5';
 const $ = require('jquery');
 Window.prototype.$ = $;
 
-$(document).ready(function () {
+$(function () {
     $('#items-table').DataTable({rowReorder: true});
     $('#expense_inbox_table').DataTable({rowReorder: true});
 
@@ -46,4 +46,7 @@ $(document).ready(function () {
 
     $(".article-content").prepend(ToC);
     // EOF: TOC
+
+    // form check inline hack
+    $('.make-form-check-inline').children('.form-check').addClass('form-check-inline');
 });

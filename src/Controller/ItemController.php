@@ -26,10 +26,10 @@ class ItemController extends BaseController
     public function new(Request $request, ItemRepository $itemRepository): Response
     {
         $item = new Item();
-        $form = $this->createForm(ItemType::class, $item);
-        $form->handleRequest($request);
+        $form_item = $this->createForm(ItemType::class, $item);
+        $form_item->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form_item->isSubmitted() && $form_item->isValid()) {
             $itemRepository->add($item);
             $this->addFlash('success', self::NAME . self::SPACE . self::CREATED);
             return $this->redirectToRoute('app_item_index', [], Response::HTTP_SEE_OTHER);
@@ -37,7 +37,7 @@ class ItemController extends BaseController
 
         return $this->renderForm('item/new.html.twig', [
             'item' => $item,
-            'form' => $form,
+            'form_item' => $form_item,
         ]);
     }
 
@@ -52,10 +52,10 @@ class ItemController extends BaseController
     #[Route('/{id}/edit', name: 'app_item_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Item $item, ItemRepository $itemRepository): Response
     {
-        $form = $this->createForm(ItemType::class, $item);
-        $form->handleRequest($request);
+        $form_item = $this->createForm(ItemType::class, $item);
+        $form_item->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form_item->isSubmitted() && $form_item->isValid()) {
             $itemRepository->add($item);
             $this->addFlash('success', self::NAME . self::SPACE . self::UPDATED);
             return $this->redirectToRoute('app_item_index', [], Response::HTTP_SEE_OTHER);
@@ -63,7 +63,7 @@ class ItemController extends BaseController
 
         return $this->renderForm('item/edit.html.twig', [
             'item' => $item,
-            'form' => $form,
+            'form_item' => $form_item,
         ]);
     }
 

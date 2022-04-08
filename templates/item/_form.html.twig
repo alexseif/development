@@ -1,8 +1,10 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+{{ form_start(form_item) }}
+    {{ form_row(form_item.name) }}
+    {{ form_row(form_item.description) }}
+    {{ form_row(form_item.priority) }}
 <div class="form-actions">
     <div class="btn-group">
         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
     </div><!-- .btn-group -->
 </div><!-- .form-actions -->
-{{ form_end(form) }}
+{{ form_end(form_item) }}
