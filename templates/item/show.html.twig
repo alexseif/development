@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}<small>Item:</small> {{ item.name }}{% endblock %}
+{% block title %}<em>{{ type|capitalize }}:</em> {{ item.name }}{% endblock %}
 {% block page_actions %}
     <a class="btn-outline-dark" href="{{ path('app_item_index', {'type':type}) }}"><em
                 class="bi bi-arrow-left"></em></a>
@@ -12,12 +12,11 @@
 {% endblock %}
 
 {% block body %}
-    <table>
+    <div>
+        <p>{{ item.description }}</p>
+    </div>
+    <table class="small">
         <caption>Item Details</caption>
-        <tr>
-            <th>Name</th>
-            <td>{{ item.name }}</td>
-        </tr>
         <tr>
             <th>CreatedAt</th>
             <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
