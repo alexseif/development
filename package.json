@@ -9,6 +9,9 @@
     "sass-loader": "^12.6.0",
     "webpack-notifier": "^1.6.0"
   },
+  "engines": {
+    "yarn": "1.x"
+  },
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
