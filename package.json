@@ -10,7 +10,8 @@
     "webpack-notifier": "^1.6.0"
   },
   "engines": {
-    "yarn": "1.x"
+    "yarn": "1.x",
+    "npm": "8.x"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -19,8 +20,7 @@
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress",
-    "postinstall": "encore production --progress",
-    "heroku-postbuild": "encore production --progress"
+    "postinstall": "encore production --progress"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.3",
