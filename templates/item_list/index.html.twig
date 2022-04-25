@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item Lists{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-primary" href="{{ path('app_item_list_new') }}"><em class=" bi bi-plus"></em></a>
+{% endblock %}
+{% block card_actions %}
+    {{ knp_menu_render('types',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
+{% endblock %}
+
+{% block card_body %}
+    <table class="table">
+        <caption>Item lists</caption>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item_list in item_lists %}
+            <tr>
+                <td>{{ item_list.id }}</td>
+                <td>{{ item_list.name }}</td>
+                <td>
+                    <a class="btn btn-link" href="{{ path('app_item_list_show', {'id': item_list.id}) }}"><em
+                                class="bi bi-eye-fill"></em></a>
+                    <a class="btn btn-link" href="{{ path('app_item_list_edit', {'id': item_list.id}) }}"><em
+                                class="bi bi-pencil"></em></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

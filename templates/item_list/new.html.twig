@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ItemList{% endblock %}
+
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_item_list_index') }}"><em
+                class="bi bi-arrow-left"></em></a>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('item_list/_form.html.twig') }}
+
+{% endblock %}

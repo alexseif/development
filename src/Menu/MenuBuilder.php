@@ -28,6 +28,7 @@ class MenuBuilder
 
         $menu->addChild('Home', ['route' => 'app_home']);
         $menu->addChild('Items', ['route' => 'app_item_index']);
+        $menu->addChild('Item Lists', ['route' => 'app_item_list_index']);
         $menu->addChild('Expenses Inbox', ['route' => 'app_expense_inbox_index']);
         // ... add more children
 

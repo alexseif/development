@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Dictrionary\Types;
 use App\Entity\Item;
+use App\Entity\ItemList;
 use App\Exceptions\TypeNotFoundException;
 use App\Form\ItemType;
 use App\Repository\ItemRepository;
@@ -28,18 +29,28 @@ class ItemController extends BaseController
         ]);
     }
 
-    #[Route('/{type}/new', name: 'app_item_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ItemRepository $itemRepository, $type = 'item'): Response
-    {
+    #[Route('/{itemList}/{type}/new', name: 'app_item_new', methods: ['GET', 'POST'])]
+    public function new(
+        Request $request,
+        ItemRepository $itemRepository,
+        $type = 'item',
+        ItemList $itemList = null
+    ): Response {
         $item = new Item();
         $item->setType($type);
+        $item->setItemList($itemList);
         $form_item = $this->createForm(ItemType::class, $item);
         $form_item->handleRequest($request);
 
         if ($form_item->isSubmitted() && $form_item->isValid()) {
             $itemRepository->add($item);
             $this->addFlash('success', self::NAME . self::SPACE . self::CREATED);
-            return $this->redirectToRoute('app_item_index', ['type' => $type], Response::HTTP_SEE_OTHER);
+            $redirect = $this->redirectToRoute('app_item_index', ['type' => $type], Response::HTTP_SEE_OTHER);
+            if ($itemList) {
+                $redirect = $this->redirectToRoute('app_item_list_show',
+                    ['id' => $itemList->getId(), Response::HTTP_SEE_OTHER]);
+            }
+            return $redirect;
         }
 
         return $this->renderForm('item/new.html.twig', [

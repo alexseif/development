@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ item_list.name }}{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_item_list_index') }}"><em
+                class="bi bi-arrow-left"></em></a>
+    <a class="btn-outline-primary"
+       href="{{ path('app_item_new', {'itemList': item_list.id}) }}"><em
+                class="bi bi-plus"></em></a>
+{% endblock %}
+{% block card_actions %}
+    <a class="btn btn-primary" href="{{ path('app_item_list_edit', {'id': item_list.id}) }}"><em
+                class="bi bi-pencil"></em></a>
+    {{ include('item_list/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <caption>Item list details</caption>
+        <tbody>
+        {% set counter = 1 %}
+        {% for item in item_list.items %}
+            <tr>
+                <td><strong>#{{ "%02d"|format(counter) }}</strong></td>
+                <th id="{{ item.id }}">{{ item.name }}</th>
+                <td><a class="btn btn-link" href="{{ path('app_item_show', {'id': item.id, 'type':item.type}) }}"><em
+                                class="bi bi-eye-fill"></em></a>
+                    <a class="btn btn-link" href="{{ path('app_item_edit', {'id': item.id, 'type':item.type}) }}"><em
+                                class="bi bi-pencil"></em></a></td>
+            </tr>
+            {% set counter = counter + 1 %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

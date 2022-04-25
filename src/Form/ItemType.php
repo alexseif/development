@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Item;
+use App\Entity\ItemList;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +18,12 @@ class ItemType extends AbstractType
             ->add('type', ChoiceType::class, [
                 'choices' => Item::geTypeChoices(),
                 'attr' => ['class' => 'tom-select']
+            ])
+            ->add('itemList', EntityType::class, [
+                'class' => ItemList::class,
+                'required' => false,
+                'attr' => ['class' => 'tom-select']
+
             ])
             ->add('name')
             ->add('description')

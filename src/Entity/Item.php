@@ -26,11 +26,26 @@ class Item
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[ORM\ManyToOne(targetEntity: ItemList::class, inversedBy: 'items')]
+    private $itemList;
+
 
     public function getId(): ?int
     {
         return $this->id;
 
+    }
+
+    public function getItemList(): ?ItemList
+    {
+        return $this->itemList;
+    }
+
+    public function setItemList(?ItemList $itemList): self
+    {
+        $this->itemList = $itemList;
+
+        return $this;
     }
 
 

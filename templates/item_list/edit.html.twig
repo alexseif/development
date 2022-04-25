@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ItemList{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_item_list_show', {'id':item_list.id}) }}"><em
+                class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block card_actions %}
+    {{ include('item_list/_delete_form.html.twig') }}
+{% endblock %}
+{% block body %}
+    {{ include('item_list/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

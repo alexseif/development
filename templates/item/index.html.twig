@@ -2,7 +2,8 @@
 
 {% block title %}{{ type|capitalize }}{% endblock %}
 {% block page_actions %}
-    <a class="btn-outline-primary" href="{{ path('app_item_new', {'type' : type}) }}"><em class=" bi bi-plus"></em></a>
+    <a class="btn-outline-primary" href="{{ path('app_item_new', {'type' : type, 'itemList':0}) }}"><em
+                class=" bi bi-plus"></em></a>
 {% endblock %}
 {% block card_actions %}
     {{ knp_menu_render('types',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
@@ -15,6 +16,7 @@
         <tr>
             <th>Name</th>
             <th>Priority</th>
+            <th>Type</th>
             <th>CreatedAt</th>
             <th>UpdatedAt</th>
             <th>actions</th>
@@ -25,6 +27,7 @@
             <tr data-position="{{ item.sortPosition }}">
                 <td>{{ item.name }}</td>
                 <td>{{ item.priorityLabel() }}</td>
+                <td>{{ item.type }}</td>
                 <td>{{ item.createdAt ? item.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ item.updatedAt ? item.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
@@ -36,7 +39,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
