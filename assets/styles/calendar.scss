@@ -6,14 +6,7 @@
 #calendar-view {
   header {
     display: flex;
-    align-items: center;
-    font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
-    justify-content: center;
     margin-bottom: 2em;
-    background: #000;
-    color: #fff;
-    min-height: 10vh;
-    text-align: center;
   }
 
   ul, ol {
@@ -53,12 +46,13 @@
     text-decoration: none;
   }
 
-  ol.day-grid li:nth-child(1),
-  ol.day-grid li:nth-child(2),
-  ol.day-grid li:nth-child(3),
-  ol.day-grid li:nth-child(34),
-  ol.day-grid li:nth-child(35) {
-    background-color: $gray-100;
+  .not_this-month {
+    color: $gray-300;
+  }
+
+  .day {
+    width: 100%;
+    height: 100%;
   }
 
   @media all and (max-width: 800px) {
