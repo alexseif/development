@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello Aspirator!{% endblock %}
-
-{% block container %}
+{% block card_actions %}
+    {{ knp_menu_render('home',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
+{% endblock %}
+{% block body %}
     <article>
         <h1>Aspirations تطلع</h1>
         <h2>Development التنمية</h2>

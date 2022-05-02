@@ -12,13 +12,15 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class MenuBuilder
 {
     private $factory;
+    private $navClass = 'nav justify-content-end';
 
     public function __construct(FactoryInterface $factory)
     {
         $this->factory = $factory;
     }
 
-    public function createMainMenu(RequestStack $requestStack)
+//    public function createMainMenu()
+    public function createMainMenu()
     {
         $menu = $this->factory->createItem('root', [
             'childrenAttributes' => [
@@ -36,11 +38,24 @@ class MenuBuilder
         return $menu;
     }
 
-    public function createTypesMenu(RequestStack $requestStack)
+    public function createHomeMenu()
     {
         $menu = $this->factory->createItem('root', [
             'childrenAttributes' => [
-                'class' => 'nav justify-content-end',
+                'class' => $this->navClass,
+            ],
+        ]);
+        $menu->addChild('Home', ['route' => 'app_home']);
+        $menu->addChild('Color', ['route' => 'app_home_colors']);
+        $menu->addChild('Aspirations', ['route' => 'app_home_aspirations']);
+        return $menu;
+    }
+
+    public function createTypesMenu()
+    {
+        $menu = $this->factory->createItem('root', [
+            'childrenAttributes' => [
+                'class' => $this->navClass,
             ],
         ]);
         $types = Types::$typeLabels;
@@ -51,11 +66,11 @@ class MenuBuilder
         return $menu;
     }
 
-    public function createCalendarMenu(RequestStack $requestStack)
+    public function createCalendarMenu()
     {
         $menu = $this->factory->createItem('root', [
             'childrenAttributes' => [
-                'class' => 'nav justify-content-end',
+                'class' => $this->navClass,
             ],
         ]);
         $menu->addChild('Month', ['route' => 'app_calendar_month']);

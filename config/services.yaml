@@ -31,6 +31,13 @@ services:
     tags:
       - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
 
+  app.home_menu:
+    class: Knp\Menu\MenuItem # the service definition requires setting the class
+    factory: [ "@app.menu_builder", createHomeMenu ]
+    arguments: [ "@request_stack" ]
+    tags:
+      - { name: knp_menu.menu, alias: home } # The alias is what is used to retrieve the menu
+
   app.types_menu:
     class: Knp\Menu\MenuItem # the service definition requires setting the class
     factory: [ "@app.menu_builder", createTypesMenu ]

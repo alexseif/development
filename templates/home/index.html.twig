@@ -1,15 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
+{% block title %}Routines!{% endblock %}
+{% block card_actions %}
+    {{ knp_menu_render('home',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
+{% endblock %}
 {% block body %}
-    <div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
-    <div class="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
-    <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
-    <div class="p-3 mb-2 bg-danger text-white">.bg-danger</div>
-    <div class="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
-    <div class="p-3 mb-2 bg-info text-white">.bg-info</div>
-    <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
-    <div class="p-3 mb-2 bg-dark text-white">.bg-dark</div>
-    <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+    <heaer>Morning routine</heaer>
+    <ol>
+        <li>Brush Teeth</li>
+        <li>Drink Water</li>
+        <li>Wash dishes</li>
+        <li>Exercise</li>
+        <li>Breakfast</li>
+    </ol>
+    <header>Day routine</header>
+    <ol>
+        <li>Work</li>
+        <li>Eat</li>
+        <li>Work</li>
+        <li>Stretch</li>
+        <li>Eat</li>
+        <li>Work</li>
+        <li>Read</li>
+    </ol>
+    <header>Afternoon routine</header>
+    <ol>
+        <li>Read emails</li>
+        <li>Study</li>
+        <li>Walk for an hour</li>
+        <li>Assign priorities</li>
+        <li>Chores</li>
+        <li>Shopping</li>
+        <li>Cooking</li>
+    </ol>
+    <header>Sleeping routine</header>
+    <ol>
+        <li>Turn off screens</li>
+        <li>Brush Teeth</li>
+    </ol>
 {% endblock %}
