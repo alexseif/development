@@ -50,4 +50,16 @@ class MenuBuilder
         }
         return $menu;
     }
+
+    public function createCalendarMenu(RequestStack $requestStack)
+    {
+        $menu = $this->factory->createItem('root', [
+            'childrenAttributes' => [
+                'class' => 'nav justify-content-end',
+            ],
+        ]);
+        $menu->addChild('Month', ['route' => 'app_calendar_month']);
+        $menu->addChild('Week', ['route' => 'app_calendar_week']);
+        return $menu;
+    }
 }

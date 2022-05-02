@@ -3,6 +3,7 @@
 /**
   * The following content was designed & implemented under AlexSeif.com
  **/
+
 #calendar-month-view {
   header {
     display: flex;
@@ -78,14 +79,6 @@
   $calendar-template: $time-width 10px repeat(7, 1fr);
   $current-time-color: #ea4335;
 
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    background: #fff;
-  }
-
   .container {
     width: 100%;
     display: grid;
@@ -93,7 +86,7 @@
     position: absolute;
   }
 
-  .title {
+  header {
     background: #217346;
     text-align: center;
     display: grid;
@@ -105,6 +98,7 @@
   }
 
   .days {
+    background-color: var(--bs-body-bg);
     display: grid;
     place-content: center;
     text-align: center;

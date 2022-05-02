@@ -37,6 +37,12 @@ services:
     arguments: [ "@request_stack" ]
     tags:
       - { name: knp_menu.menu, alias: types } # The alias is what is used to retrieve the menu
+  app.calendar_menu:
+    class: Knp\Menu\MenuItem # the service definition requires setting the class
+    factory: [ "@app.menu_builder", createCalendarMenu ]
+    arguments: [ "@request_stack" ]
+    tags:
+      - { name: knp_menu.menu, alias: calendar } # The alias is what is used to retrieve the menu
 
 
   # add more service definitions when explicit configuration is needed

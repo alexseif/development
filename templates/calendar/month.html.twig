@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-    {% block stylesheets %}
-        {{ parent() }}
-        {{ encore_entry_link_tags('calendar') }}
-    {% endblock %}
-    {% block javascripts %}
-        {{ parent() }}
-        {{ encore_entry_script_tags('calendar') }}
-    {% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('calendar') }}
+{% endblock %}
 {% block container_wrapper %}
+    {{ knp_menu_render('calendar',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
     <div class="container-fluid">
         <div id="calendar-month-view">
             <div class="calendar-container">
@@ -18,27 +18,11 @@
                         <h1>{% block title %}Calender View | {{ month_ui.today|date }}{% endblock %}</h1>
                     </header>
                     <ul class="weekdays">
-                        <li>
-                            <abbr title="S">Saturday</abbr>
-                        </li>
-                        <li>
-                            <abbr title="S">Sunday</abbr>
-                        </li>
-                        <li>
-                            <abbr title="M">Monday</abbr>
-                        </li>
-                        <li>
-                            <abbr title="T">Tuesday</abbr>
-                        </li>
-                        <li>
-                            <abbr title="W">Wednesday</abbr>
-                        </li>
-                        <li>
-                            <abbr title="T">Thursday</abbr>
-                        </li>
-                        <li>
-                            <abbr title="F">Friday</abbr>
-                        </li>
+                        {% for i in ['Sat','Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri'] %}
+                            <li>
+                                <abbr title="{{ i }}">{{ i }}</abbr>
+                            </li>
+                        {% endfor %}
                     </ul>
                     <ol class="day-grid">
                         {% for calendar_day in month_ui.period %}
