@@ -10,7 +10,7 @@ use DatePeriod;
 use DateTime;
 use Exception;
 
-class Month
+class Week
 {
     public $today, $period;
 
@@ -30,9 +30,8 @@ class Month
      */
     public function getFirstDayOfCalendar(): DateTime
     {
-        $firstOfMonth = new DateTime($this->today->format('Y-m-01'));
-        $firstOfMonthDayOfTheWeek = (int)$firstOfMonth->format('N');
-        switch ($firstOfMonthDayOfTheWeek) {
+        $dayOfTheWeek = (int)$this->today->format('N');
+        switch ($dayOfTheWeek) {
             case 6:
                 $extraDays = 0;
                 break;
@@ -40,12 +39,12 @@ class Month
                 $extraDays = 1;
                 break;
             default:
-                $extraDays = 1 + $firstOfMonthDayOfTheWeek;
+                $extraDays = 1 + $dayOfTheWeek;
                 break;
         }
-        $firstDayOfTheCalendar = new DateTime($this->today->format('Y-m-01 00:00:00'));
-        $firstDayOfTheCalendar->modify('-' . $extraDays . ' days');
-        return $firstDayOfTheCalendar;
+        $weekStart = new DateTime($this->today->format('Y-m-d 00:00:00'));
+        $weekStart->modify('-' . $extraDays . ' days');
+        return $weekStart;
     }
 
     /**
@@ -54,9 +53,8 @@ class Month
      */
     public function getLastDayOfCalendar(): DateTime
     {
-        $lastOfMonth = new DateTime($this->today->format('Y-m-t'));
-        $lastOfMonthDayOfTheWeek = $lastOfMonth->format('N');
-        switch ($lastOfMonthDayOfTheWeek) {
+        $dayOfTheWeek = $this->today->format('N');
+        switch ($dayOfTheWeek) {
             case 6:
                 $extraDays = 6;
                 break;
@@ -64,10 +62,10 @@ class Month
                 $extraDays = 5;
                 break;
             default:
-                $extraDays = 5 - $lastOfMonthDayOfTheWeek;
+                $extraDays = 5 - $dayOfTheWeek;
                 break;
         }
-        $lastDayOfTheCalendar = new DateTime($this->today->format('Y-m-t 00:00:01'));
+        $lastDayOfTheCalendar = new DateTime($this->today->format('Y-m-d 00:00:01'));
         $lastDayOfTheCalendar->modify($extraDays . ' days');
         return $lastDayOfTheCalendar;
     }

@@ -11,13 +11,16 @@
 
 {% block container_wrapper %}
     <div class="container-fluid">
-        <div id="calendar-view">
+        <div id="calendar-month-view">
             <div class="calendar-container">
                 <div class="calendar">
                     <header>
                         <h1>{% block title %}Calender View | {{ month_ui.today|date }}{% endblock %}</h1>
                     </header>
                     <ul class="weekdays">
+                        <li>
+                            <abbr title="S">Saturday</abbr>
+                        </li>
                         <li>
                             <abbr title="S">Sunday</abbr>
                         </li>
@@ -36,15 +39,14 @@
                         <li>
                             <abbr title="F">Friday</abbr>
                         </li>
-                        <li>
-                            <abbr title="S">Saturday</abbr>
-                        </li>
                     </ul>
                     <ol class="day-grid">
                         {% for calendar_day in month_ui.period %}
                             <li class="{{ (calendar_day|date('M') != month_ui.today|date("M"))? 'not_this-month' }}">
                                 <div class="day">
                                     <span>{{ calendar_day|date('d') }}</span>
+                                    <span>{{ calendar_day|date('N') }}</span>
+                                    <span>{{ calendar_day|date('D') }}</span>
                                 </div>
                             </li>
                         {% endfor %}
