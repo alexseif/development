@@ -5,7 +5,9 @@
     <a class="btn-outline-primary" href="{{ path('app_chronometer_new') }}"><em
                 class=" bi bi-plus"></em></a>
 {% endblock %}
-
+{% block card_actions %}
+    <button id="chronometer_start" class="btn btn-sm btn-outline-primary">Start</button>
+{% endblock %}
 {% block card_body %}
     <table class="table">
         <caption>Chronometer Table</caption>
