@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chronometer index{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-primary" href="{{ path('app_chronometer_new') }}"><em
+                class=" bi bi-plus"></em></a>
+{% endblock %}
+
+{% block card_body %}
+    <table class="table">
+        <caption>Chronometer Table</caption>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Start</th>
+            <th>Stop</th>
+            <th>Interval</th>
+            <th>Seconds</th>
+            <th>Name</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for chronometer in chronometers %}
+            <tr>
+                <td>{{ chronometer.id }}</td>
+                <td>{{ chronometer.start ? chronometer.start|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ chronometer.stop ? chronometer.stop|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ chronometer.interval ? chronometer.interval.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
+                <td>{{ chronometer.seconds }}</td>
+                <td>{{ chronometer.name }}</td>
+                <td>{{ chronometer.createdAt ? chronometer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ chronometer.updatedAt ? chronometer.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_chronometer_show', {'id': chronometer.id}) }}">show</a>
+                    <a href="{{ path('app_chronometer_edit', {'id': chronometer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chronometer_new') }}">Create new</a>
+{% endblock %}
