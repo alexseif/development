@@ -45,7 +45,7 @@ class MenuBuilder
                 'class' => $this->navClass,
             ],
         ]);
-        $menu->addChild('Home', ['route' => 'app_home']);
+        $menu->addChild('Routines', ['route' => 'app_home_routines']);
         $menu->addChild('Color', ['route' => 'app_home_colors']);
         $menu->addChild('Aspirations', ['route' => 'app_home_aspirations']);
         return $menu;
