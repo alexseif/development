@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Routines!{% endblock %}
+{% block card_actions %}
+    {{ knp_menu_render('home',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <header>Morning routine</header>
+            <ol>
+                <li>Brush Teeth</li>
+                <li>Drink Water</li>
+                <li>Water plants</li>
+                <li>Exercise</li>
+                <li>Breakfast</li>
+                <li>Wash dishes</li>
+            </ol>
+        </div>
+        <div class="col">
+            <header>Day routine</header>
+            <ol>
+                <li>Work</li>
+                <li>Eat</li>
+                <li>Work</li>
+                <li>Stretch</li>
+                <li>Eat</li>
+                <li>Work</li>
+                <li>Read</li>
+            </ol>
+        </div>
+        <div class="col">
+            <header>Afternoon routine</header>
+            <ol>
+                <li>Read emails</li>
+                <li>Study</li>
+                <li>Walk for an hour</li>
+                <li>Assign priorities</li>
+                <li>Chores</li>
+                <li>Shopping</li>
+                <li>Cooking</li>
+            </ol>
+        </div>
+        <div class="col">
+            <header>Sleeping routine</header>
+            <ol>
+                <li>Turn off screens</li>
+                <li>Brush Teeth</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
