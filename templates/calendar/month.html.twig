@@ -29,8 +29,8 @@
                             <li class="{{ (calendar_day|date('M') != month_ui.today|date("M"))? 'not_this-month' }}">
                                 <div class="day">
                                     <span>{{ calendar_day|date('d') }}</span>
-                                    <span>{{ calendar_day|date('N') }}</span>
-                                    <span>{{ calendar_day|date('D') }}</span>
+                                    {#                                    <span>{{ calendar_day|date('N') }}</span> #}
+                                    {#                                    <span>{{ calendar_day|date('D') }}</span> #}
                                 </div>
                             </li>
                         {% endfor %}
