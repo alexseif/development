@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit WeightLog{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_item_show', {'id':weight_log.id}) }}"><em
+                class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block card_actions %}
+    {{ include('weight_log/_delete_form.html.twig') }}
+{% endblock %}
+{% block body %}
+    {{ include('weight_log/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

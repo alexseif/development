@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weight Log{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-primary" href="{{ path('app_weight_log_new') }}"><em class=" bi bi-plus"></em></a>
+{% endblock %}
+
+{% block card_body %}
+    <table class="table">
+        <caption>Weight log</caption>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Weight</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for weight_log in weight_logs %}
+            <tr>
+                <td>{{ weight_log.createdAt ? weight_log.createdAt|date('Y-m-d') : '' }}</td>
+                <td>KG {{ weight_log.weight }}</td>
+                <td>
+                    <a class="btn btn-link" href="{{ path('app_weight_log_show', {'id': weight_log.id}) }}"><em
+                                class="bi bi-eye-fill"></em></a>
+                    <a class="btn btn-link" href="{{ path('app_weight_log_edit', {'id': weight_log.id}) }}"><em
+                                class="bi bi-pencil"></em></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
