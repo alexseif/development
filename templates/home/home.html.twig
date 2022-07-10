@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classification of needs!{% endblock %}
+{% block container %}
+    <a href="{{ path('app_home_marslow') }}">Marslow's Bullshit</a>
+    <h2>Classification of needs!</h2>
+    <ol>
+        <li>Eat Well</li>
+        <li>Smoke Less</li>
+        <li>Excercise</li>
+        <li>Sleep Well</li>
+        <li>Rest</li>
+    </ol>
+    <div class="d-flex justify-content-center flex-wrap">
+        {% for topic, items in topics %}
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h2>{{ topic }}</h2>
+                </div>
+                <div class="list-group">
+                    {% for item in items %}
+                        <div class="list-group-item">{{ item }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
