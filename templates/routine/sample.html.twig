@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoutineBuilderController!{% endblock %}
+
+{% block body %}
+
+    <h2>Wake up Schedule</h2>
+    <div class="list-group">
+        {% for schedule in wakeUpSchedule %}
+            <div class="list-group-item">{{ schedule.start|date }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}

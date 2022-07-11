@@ -51,6 +51,9 @@ services:
     tags:
       - { name: knp_menu.menu, alias: calendar } # The alias is what is used to retrieve the menu
 
+  app.what_todo_now:
+    class: App\Service\WhatTodoNow
+
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

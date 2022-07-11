@@ -10,6 +10,9 @@
 <body>
 {% block body_wrapper %}
     {% block navigation %}{% include('_navbar.html.twig') %}{% endblock %}
+    {% block wtn %}
+        <div id="wtn">{{ WhatTodoNow.whatTodoNow().name }}</div>
+    {% endblock %}
     {% block tray %}{% include('_tray.html.twig') %}{% endblock %}
     {% block page_actions_wrapper %}
         <div class="page-actions btn-group btn-group-sm">{% block page_actions %}{% endblock %}</div><!-- page-actions -->

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoutineBuilderController!{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <caption>Workday routine</caption>
+        <thead>
+        <tr>
+            <th role="columnheader">Task</th>
+            <th role="columnheader">Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for routine in workday.items %}
+            <tr>
+                <td>{{ routine.name }}</td>
+                <td>{{ routine.start|date('H:i') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>Total</td>
+            <td>Something</td>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}
