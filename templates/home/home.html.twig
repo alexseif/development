@@ -2,7 +2,7 @@
 
 {% block title %}Classification of needs!{% endblock %}
 {% block container %}
-    <a href="{{ path('app_home_marslow') }}">Marslow's Bullshit</a>
+    {{ knp_menu_render('home',  {'currentClass': 'active', 'template': '_menu_knp_bootstrap5.html.twig'}) }}
     <h2>Classification of needs!</h2>
     <ol>
         <li>Eat Well</li>
