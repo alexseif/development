@@ -1,0 +1,8 @@
+{{ form_start(form, { 'attr':{'class': 'w-100'} }) }}
+    {{ form_widget(form) }}
+<div class="form-actions">
+    <div class="btn-group">
+        <button class="btn btn-outline-dark">{{ button_label|default('Set Intention') }}</button>
+    </div><!-- .btn-group -->
+</div><!-- .form-actions -->
+{{ form_end(form) }}

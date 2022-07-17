@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Intentions{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-primary" href="{{ path('app_intention_new') }}"><em
+                class=" bi bi-plus"></em></a>
+{% endblock %}
+
+{% block body %}
+    <div class="list-group">
+        {% for intention in intentions %}
+            <div class="list-group-item">
+                <div class="d-flex">
+                    <div class="me-auto"><a class="h1 text-white text-decoration-none"
+                                            href="{{ path('app_intention_show', {'id':intention.id}) }}">
+                            {{ intention.description }}</a>
+                    </div>
+                    <div class="align-self-end">{{ intention.createdAt ? intention.createdAt|time_diff : '' }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

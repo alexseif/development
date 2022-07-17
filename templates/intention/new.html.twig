@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_intention_index') }}"><em
+                class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block container %}
+    <div class="d-flex flex-column justify-content-center align-items-center" style="height: calc(100vh - 104px);">
+        <h1>{% block title %}What's your intention for today?{% endblock %}</h1>
+        {{ include('intention/_form.html.twig') }}
+    </div>
+{% endblock %}

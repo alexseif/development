@@ -35,6 +35,7 @@ class MenuBuilder
         $menu->addChild('Item Lists', ['route' => 'app_item_list_index']);
         $menu->addChild('Expenses Inbox', ['route' => 'app_expense_inbox_index']);
         $menu->addChild('Weight Log', ['route' => 'app_weight_log_index']);
+        $menu->addChild('Intention', ['route' => 'app_intention_index']);
         // ... add more children
 
         return $menu;

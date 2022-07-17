@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Intention{% endblock %}
+{% block page_actions %}
+    <a class="btn-outline-dark" href="{{ path('app_intention_index') }}"><em
+                class="bi bi-arrow-left"></em></a>
+{% endblock %}
+{% block card_actions %}
+    {{ include('intention/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+    {{ include('intention/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    {{ include('intention/_delete_form.html.twig') }}
+{% endblock %}
