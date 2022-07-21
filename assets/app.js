@@ -14,7 +14,6 @@ import 'datatables.net-rowreorder';
 import 'datatables.net-rowreorder-bs5';
 import './styles/app.scss';
 
-const Chronometer = require('./Chronometer');
 const $ = require('jquery');
 Window.prototype.$ = $;
 
@@ -58,9 +57,5 @@ $(function () {
         new TomSelect('.tom-select', tomSelectConfig);
     }
 
-    //Chronometer
-    console.log('init chronometer');
-    $('#chronometer_start').click(Chronometer.start);
-    Chronometer.start();
 });
 
