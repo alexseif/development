@@ -17,7 +17,7 @@ class IntentionController extends AbstractController
     public function index(IntentionRepository $intentionRepository): Response
     {
         return $this->render('intention/index.html.twig', [
-            'intentions' => $intentionRepository->findAll(),
+            'intentions' => $intentionRepository->findBy([], ["createdAt" => "DESC"]),
         ]);
     }
 
