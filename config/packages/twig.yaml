@@ -3,6 +3,7 @@ twig:
   form_themes: [ 'bootstrap_5_layout.html.twig' ]
   globals:
     WhatTodoNow: '@app.what_todo_now'
+    ServerIP: '@app.server_ip'
 when@test:
   twig:
     strict_variables: true

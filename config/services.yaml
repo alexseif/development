@@ -54,6 +54,9 @@ services:
   app.what_todo_now:
     class: App\Service\WhatTodoNow
 
+  app.server_ip:
+    class: App\Service\ServerIP
+
   twig.extension.date:
     class: Twig_Extensions_Extension_Date
     tags:
