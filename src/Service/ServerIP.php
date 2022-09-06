@@ -5,8 +5,10 @@ namespace App\Service;
 
 class ServerIP
 {
+    private $serviceURI = "http://ipecho.net/plain";
+
     public function get()
     {
-        return $_SERVER['SERVER_ADDR'] ?? gethostbyname(gethostname());
+        return file_get_contents($this->serviceURI);
     }
 }
