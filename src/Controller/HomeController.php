@@ -14,16 +14,17 @@ class HomeController extends AbstractController
     {
         $topics = [
             'Physical' => [
-                'Fix Shoulder',
-                'Phlebologist'
+                'Fix shoulder',
+                'Philologist',
+                'Gain energy'
             ],
             'Psychological' => [
                 'Read',
-                'Socialize'
+                'Passion'
             ],
             'Bank' => [
-                'Work hard',
-                'FSN',
+                'Work less make more',
+                '<del>FSN</del>',
                 'Boutique'
 
             ],
@@ -54,8 +55,7 @@ class HomeController extends AbstractController
                 'Shelter',
                 'Sleep',
                 'Sexual intercourse'
-            ]
-            ,
+            ],
             'Safety Needs' => [
                 'Health',
                 'Personal security',
